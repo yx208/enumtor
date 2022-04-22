@@ -1,14 +1,10 @@
 class Enum {
 
     /**
-     * @private
-     */
-    _text = {};
-
-    /**
      * @param {EnumMap} enumMap
      */
     constructor(enumMap) {
+        this._text = {};
         Object.keys(enumMap).forEach(key => {
             const item = enumMap[key];
             this[key] = item.value;
@@ -20,6 +16,7 @@ class Enum {
 
     /**
      * @param {any} enumValue - 枚举值
+     * @return {string|null}
      */
     text(enumValue) {
         return this._text[enumValue] || null;
@@ -27,6 +24,7 @@ class Enum {
 
     /**
      * @param { (text: any, key: string) => {} } handler
+     * @return {Array}
      */
     map(handler) {
         return Object.keys(this._text).reduce((arr, key) => {
@@ -38,6 +36,7 @@ class Enum {
     /**
      * @description 判断枚举值是否在当前枚举中
      * @param {any} enumValue
+     * @return {boolean}
      */
     has(enumValue) {
         return enumValue in this._text;
@@ -46,6 +45,7 @@ class Enum {
 
 /**
  * @param {EnumMap} enumMap
+ * @return {Enum}
  */
 function createEnum(enumMap) {
     return new Proxy(new Enum(enumMap), {
