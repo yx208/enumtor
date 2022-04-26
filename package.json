@@ -1,13 +1,20 @@
 {
-  "name": "enumtor",
-  "version": "1.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "node index.test.js"
-  },
-  "type": "module",
-  "keywords": ["enum", "enumtor"],
-  "author": "yuanxian",
-  "license": "MIT"
+    "name": "enumtor",
+    "version": "1.0.2",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "node example/index.test.js"
+    },
+    "type": "module",
+    "keywords": [
+        "enum",
+        "enumtor"
+    ],
+    "author": "yuanxian",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:InmoJl/enumtor.git"
+    }
 }
