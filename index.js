@@ -1,3 +1,6 @@
+/**
+ * @implements {EnumMap}
+ */
 class Enum {
 
     /**

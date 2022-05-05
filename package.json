@@ -1,11 +1,12 @@
 {
     "name": "enumtor",
-    "version": "1.0.2",
-    "description": "",
+    "version": "1.0.3",
+    "description": "简易枚举模式",
     "main": "index.js",
     "scripts": {
         "test": "node example/index.test.js"
     },
+    "types": "enum.d.ts",
     "type": "module",
     "keywords": [
         "enum",
