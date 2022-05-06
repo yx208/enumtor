@@ -40,11 +40,18 @@ console.log(Color.has(6));   // false
 Color.RED = 10; // Error
 
 
-
-const options = Color.map((value, text) => {
-    return { label: text, value };
+// 可以通过 map 生成一组数据
+const options = Color.map((label, value) => {
+    return { label, value };
 });
+
+// 可以通过 map 第二个参数生成一组带初始值的数据
+const options2 = Color.map((label, value) => {
+    return { label, value };
+}, [{ label: '全部', value: 'all' }]);
+
 console.log(options); // [{ label: '红色', value: 1 }...]
+console.log(options2); // [{ label: '全部', value: 'all' }, { label: '红色', value: 1 } ...]
 
 ```
 

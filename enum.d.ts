@@ -8,7 +8,7 @@ declare interface EnumMap<T> {
 declare interface EnumInstance<T> {
     text: (enumValue: T) => string | null
     has: (enumValue: T) => boolean
-    map: (handler: (text: string, value: T) => any) => any[]
+    map: (handler: (text: string, value: T) => any, initWrapper?: any[]) => any[]
     [key: keyof EnumMap<T>]: any
 }
 

@@ -10,7 +10,7 @@ class Enum {
         this._map = new Map();
         Object.keys(enumMap).forEach(key => {
 
-            if (typeof key !== 'string') throw new Error("不能使用非字符串 key");
+            if (typeof key !== 'string') throw new Error("Cannot use non-string keys");
 
             const item = enumMap[key];
             this[key] = item.value;
@@ -29,12 +29,22 @@ class Enum {
 
     /**
      * @param { (text: string, value: any) => {} } handler
-     * @return {unknown[]}
+     * @param {Array} [initWrapper]
+     * @return {any[]}
      */
-    map(handler) {
-        const arr = [];
-        this._map.forEach((t, v) => arr.push(handler(t, v)));
-        return arr;
+    map(handler, initWrapper = []) {
+
+        if (!Array.isArray(initWrapper)) throw new Error('The parameter [initWrapper] must be an array');
+
+        const arr = Array.from(this._map);
+        return arr.reduce((wrapper, item) => {
+            wrapper.push(handler(item[1], item[0]));
+            return wrapper;
+        }, initWrapper);
+
+        // const arr = [];
+        // this._map.forEach((t, v) => arr.push(handler(t, v)));
+        // return arr;
     }
 
     /**
@@ -57,10 +67,10 @@ function createEnum(enumMap) {
             return Reflect.get(target, key, receiver);
         },
         set() {
-            throw new Error("不能为枚举赋值");
+            throw new Error("Cannot assign value to enum");
         },
         deleteProperty() {
-            throw new Error("不能删除枚举值");
+            throw new Error("Cannot delete enum value");
         }
     });
 }

@@ -20,8 +20,13 @@ console.log(Color.has(6));   // false
 
 // Color.RED = 10; // Error
 
-const options = Color.map((text, value) => {
-    return { label: text, value };
+const options = Color.map((label, value) => {
+    return { label, value };
 });
 
+const options2 = Color.map((label, value) => {
+    return { label, value };
+}, [{ label: '全部', value: 'all' }]);
+
 console.log(options); // [{ label: '红色', value: 1 }...]
+console.log(options2); // [{ label: '全部', value: 'all' }, { label: '红色', value: 1 } ...]
